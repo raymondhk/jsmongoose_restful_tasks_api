@@ -1,0 +1,11 @@
+const express = require('express')
+const body = require('body-parser')
+const app = express()
+require('./server/config/mongoose')
+const routes_setter = require('./server/config/routes.js')
+routes_setter(app)
+app.use(body.urlencoded({ extended: true }))
+app.use(body.json())
+app.listen(8000, () => {
+    console.log('listening on Port 8000')
+})
